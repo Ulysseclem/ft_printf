@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ulysse <ulysse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:46:37 by uclement          #+#    #+#             */
-/*   Updated: 2023/01/30 14:07:32 by uclement         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:36:52 by ulysse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	main(void)
 {
-	printf("test test test %d",ft_printf(5));
+	ft_printf("123456789");
 }
