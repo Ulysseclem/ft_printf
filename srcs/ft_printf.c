@@ -6,7 +6,7 @@
 /*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:03:27 by uclement          #+#    #+#             */
-/*   Updated: 2023/02/10 09:49:58 by uclement         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:01:55 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ft_which(const char *str)
 		return (7);
 	else if (*str == '%')
 		return (8);
+	return(0);
 }
 
 int	ft_printf(const char *str, ...)
@@ -57,7 +58,7 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 		{
-			if (ft_which(str + 1) == 1)
+			if (ft_which(str + 1) == 8)
 				break;
 			i = va_arg (args, int);
 			ft_putchar(i);
