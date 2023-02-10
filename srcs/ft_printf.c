@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ulysse <ulysse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:03:27 by uclement          #+#    #+#             */
-/*   Updated: 2023/02/09 17:47:26 by ulysse           ###   ########.fr       */
+/*   Updated: 2023/02/10 09:49:58 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,56 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c) 
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_which(const char *str)
 {
-	va_list args;
-	va_start(args, count%);
-
-	// int i = 0;
-
-
-	Count %
-
-
-
-	while (*str)
-	{
-		if(*str != '%' && str)
-			{
-				ft_putchar(*str);
-				str++;
-			}
-		// i = va_arg (args, int);
-		// printf("%d", i);
-	}
-	va_end(args);
-	return(0);
+	if (*str == 'c')
+		return (1);
+	else if (*str == 's')
+		return (2);
+	else if (*str == 'p')
+		return (3);
+	else if (*str == 'd')
+		return (4);
+	else if (*str == 'i')
+		return (5);
+	else if (*str == 'u')
+		return (6);
+	else if (*str == 'x')
+		return (7);
+	else if (*str == 'X')
+		return (7);
+	else if (*str == '%')
+		return (8);
 }
 
+int	ft_printf(const char *str, ...)
+{
+	va_list	args;
+	int		i;
+
+	i = 0;
+	va_start (args, str);
+	while (*str)
+	{
+		if (*str != '%' && str)
+		{
+			ft_putchar(*str);
+			str++;
+		}
+		else
+		{
+			if (ft_which(str + 1) == 1)
+				break;
+			i = va_arg (args, int);
+			ft_putchar(i);
+			str++;
+		}
+	}
+	va_end(args);
+	return (0);
+}
