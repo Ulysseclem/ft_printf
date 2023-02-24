@@ -8,7 +8,8 @@ DIRLIB		= ./libft/
 
 SRC			= ft_printf
 
-SRCS		= ./srcs/ft_printf.c
+SRCS		= ./srcs/ft_printf.c \
+			./srcs/ft_printf_function.c
 
 HEAD		= ./includes/ 
 

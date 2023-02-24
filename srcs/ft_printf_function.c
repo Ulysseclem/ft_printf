@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_function.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 10:57:22 by uclement          #+#    #+#             */
-/*   Updated: 2023/02/24 11:30:08 by uclement         ###   ########.fr       */
+/*   Created: 2023/02/24 11:21:42 by uclement          #+#    #+#             */
+/*   Updated: 2023/02/24 11:28:04 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-# include <stdarg.h>
-# include <unistd.h>
-
-int		ft_printf(const char *,...);
-void	ft_putchar(char c);
-
-#endif
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
