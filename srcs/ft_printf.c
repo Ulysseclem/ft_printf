@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ulysse <ulysse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:03:27 by uclement          #+#    #+#             */
-/*   Updated: 2023/02/24 11:28:25 by uclement         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:20:06 by ulysse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 #include <unistd.h>
 
-int	ft_which(const char *str)
+int	ft_which(const char *str, va_list args)
 {
 	if (*str == 'c')
-		return (1);
+		ft_putchar(va_arg (args, int));
 	else if (*str == 's')
-		return (2);
+		ft_str(va_arg (args, char *));
 	else if (*str == 'p')
 		return (3);
 	else if (*str == 'd')
-		return (4);
+		ft_decimal(va_arg (args, double));
 	else if (*str == 'i')
-		return (5);
+		ft_base10(va_arg (args, int));
 	else if (*str == 'u')
 		return (6);
 	else if (*str == 'x')
@@ -39,10 +40,6 @@ int	ft_which(const char *str)
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int		i;
-	char	*test;
-
-	i = 0;
 	va_start (args, str);
 	while (*str)
 	{
@@ -53,23 +50,8 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 		{
-			if (ft_which(str + 1) == 1) // %c
-			{
-				i = va_arg (args, int);
-				ft_putchar(i);
-				str++;
-			}
-			else if (ft_which(str + 1) == 2) // %s
-			{
-				test = va_arg (args, char *);
-				while (*test)
-				{
-					ft_putchar(*test);
-					test++;
-				}
-				str++;
-			}
-			str++;
+			ft_which(str + 1, args);
+			str += 2;
 		}
 	}
 	va_end(args);

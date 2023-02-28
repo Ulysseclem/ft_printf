@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_nombre.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ulysse <ulysse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 10:57:22 by uclement          #+#    #+#             */
-/*   Updated: 2023/02/28 17:20:31 by ulysse           ###   ########.fr       */
+/*   Created: 2023/02/28 16:08:45 by ulysse            #+#    #+#             */
+/*   Updated: 2023/02/28 17:24:13 by ulysse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+#include "libft.h"
+#include <stdlib.h>
 
-# include <stdarg.h>
-# include <unistd.h>
+void	 ft_base10(int i)
+{
+	char *str;
+	
+	str = ft_itoa(i);
+	while (*str)
+	{
+		ft_putchar(*str);
+		str++;
+	}
+}
 
-int		ft_printf(const char *,...);
-void	ft_putchar(char c);
-void	ft_base10(int);
-void    ft_str(char *);
-void	ft_decimal(double);
-
-
-
-#endif
+void	 ft_decimal(double i)
+{
+	char *str;
+	
+	str = ft_itoa(i);
+	while (*str)
+	{
+		ft_putchar(*str);
+		str++;
+	}
+}
