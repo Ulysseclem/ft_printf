@@ -10,7 +10,8 @@ SRC			= ft_printf
 
 SRCS		= ./srcs/ft_printf.c \
 			./srcs/ft_printf_function.c \
-			./srcs/ft_nombre.c
+			./srcs/ft_nombre.c \
+			./srcs/ft_hexa.c
 
 HEAD		= ./includes/ 
 
