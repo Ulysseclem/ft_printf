@@ -6,7 +6,7 @@
 /*   By: ulysse <ulysse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:08:45 by ulysse            #+#    #+#             */
-/*   Updated: 2023/02/28 17:24:13 by ulysse           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:03:49 by ulysse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,17 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	 ft_base10(int i)
+int	 ft_base10(int i)
 {
 	char *str;
+	int	j;
 	
+	j = 0;
 	str = ft_itoa(i);
-	while (*str)
+	while (str[j])
 	{
-		ft_putchar(*str);
-		str++;
+		ft_putchar(str[j]);
+		j++;
 	}
-}
-
-void	 ft_decimal(double i)
-{
-	char *str;
-	
-	str = ft_itoa(i);
-	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
+	return(j);
 }
