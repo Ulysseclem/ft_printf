@@ -6,7 +6,7 @@
 /*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:53:21 by uclement          #+#    #+#             */
-/*   Updated: 2023/03/15 10:53:22 by uclement         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:59:11 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,19 @@ int	ft_ptr_len(uintptr_t num)
 int	put_p(uintptr_t num)
 {
 	int	len;
-
-	len = 2;
-	write (1, "0x", 2);
-	ft_put_ptr(num);
-	len += ft_ptr_len(num);
+	
+	if (num == 0)
+	{
+		write(1 ,"(nil)",5);
+		len = 5;
+	}
+	else
+	{
+		len = 2;
+		write (1, "0x", 2);
+		ft_put_ptr(num);
+		len += ft_ptr_len(num);
+	}
 	return (len);
 }
 

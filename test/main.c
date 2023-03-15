@@ -6,7 +6,7 @@
 /*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:46:37 by uclement          #+#    #+#             */
-/*   Updated: 2023/03/15 12:30:59 by uclement         ###   ########.fr       */
+/*   Updated: 2023/03/15 13:57:34 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ int	main(void)
 		(printf("wrong return value\n\n"));
 	else
 		(printf("Good return value\n\n"));
-
 	x = ft_printf("test %%c - value str 'ert' : %c\n",'ert');
 	y = printf("test %%c - value str 'ert' : %c\n",'ert');
 	if (x - y != 0)
 		(printf("wrong return value\n\n"));
 	else
 		(printf("Good return value\n\n"));
-
 	x = ft_printf("test 'c' - value int 1 : %c\n",1);
 	y = printf("test 'c' - value int 1 : %c\n",1);
 	if (x - y != 0)
@@ -76,8 +74,10 @@ int	main(void)
 	ft_printf("test 'd' je dois affficher : %d\n",10);
 	ft_printf("test 'x' je dois affficher : %x\n",1234);
 	ft_printf("test 'X' je dois affficher : %X\n",1234);
-	printf("test 'p' je dois affficher : %p\n",(void *)30);
-	ft_printf("test 'p' je dois affficher : %p\n",(void *)30);
+	x = printf("%p\n",(void *)0);
+	printf("%d\n",x);
+	y = ft_printf("%p\n",(void *)0);
+	printf("%d\n",y);
 	printf("test 'p' je dois affficher : %p\n",b);
 	ft_printf("test 'p' je dois affficher : %p\n",b);
 	printf("test 'u' je dois affficher : %p\n",b);
