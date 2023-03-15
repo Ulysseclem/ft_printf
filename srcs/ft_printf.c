@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ulysse <ulysse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:03:27 by uclement          #+#    #+#             */
-/*   Updated: 2023/03/08 16:10:06 by ulysse           ###   ########.fr       */
+/*   Updated: 2023/03/15 12:20:24 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,51 +16,51 @@
 
 int	ft_which(const char *str, va_list args)
 {
-	int len;
-	
+	int	len;
+
 	len = 0;
 	if (*str == 'c')
 		len = ft_putchar(va_arg (args, int));
 	else if (*str == 's')
 		len = ft_str(va_arg (args, char *));
 	else if (*str == 'p')
-		ft_put_ptr(va_arg (args, uintptr_t));
-	else if (*str == 'd')
-		len = ft_base10(va_arg (args, int));
-	else if (*str == 'i')
+		len = put_p(va_arg (args, uintptr_t));
+	else if (*str == 'd' || *str == 'i')
 		len = ft_base10(va_arg (args, int));
 	else if (*str == 'u')
-		return (6);
+		len = ft_unsigned(va_arg (args, int));
 	else if (*str == 'x')
-	{
 		len = ft_hexaconverter(va_arg (args, int));
-		printf("\nlen = %d\n",len);
-	}
 	else if (*str == 'X')
-		ft_hexaconverter_maj(va_arg (args, int));
+		len = ft_hexaconverter_maj(va_arg (args, int));
 	else if (*str == '%')
-		return (8);
+	{
+		len += 1;
+		write (1, "%%", 1);
+	}
 	return (len);
 }
 
 int	ft_printf(const char *str, ...)
 {
+	int		len;
 	va_list	args;
 
+	len = 0;
 	va_start (args, str);
 	while (*str)
 	{
 		if (*str != '%' && str)
 		{
-			ft_putchar(*str);
+			len += ft_putchar(*str);
 			str++;
 		}
 		else
 		{
-			ft_which(str + 1, args);
+			len += ft_which(str + 1, args);
 			str += 2;
 		}
 	}
 	va_end(args);
-	return (0);
+	return (len);
 }
